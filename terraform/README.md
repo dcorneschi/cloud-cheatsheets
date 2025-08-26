@@ -412,7 +412,7 @@ terraform validate -json
 
 ### Utilities
 
-#### Version Management (tfenv)
+#### tfenv
 
 ```bash
 # Install tfenv on macOS
