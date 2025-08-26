@@ -323,7 +323,7 @@ unset TF_LOG
 export TF_LOG=
 ```
 
-## Console & Functions
+### Terraform Console
 
 ```bash
 # Basic console usage
