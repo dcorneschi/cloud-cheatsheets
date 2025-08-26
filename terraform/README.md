@@ -54,7 +54,10 @@ sudo mv terraform /usr/local/bin/
 ```
 
 ### Install the autocomplete package (add the line ~/.bashrc)
+
+```bash
 terraform -install-autocomplete
+```
 
 ### Useful Links
 
