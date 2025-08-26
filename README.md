@@ -1,8 +1,8 @@
-# Linux Cheatsheets 📖🐧
+## Linux Cheatsheets 📖🐧
 
 A collection of handy **Linux command-line cheatsheets** for quick reference and productivity. This repository is designed to help developers, sysadmins, and Linux enthusiasts work more efficiently.
 
-# Support
+## Support
 
 If you find this project helpful and would like to support its development, consider buying me a coffee! Your support helps me maintain and improve this project.
 
