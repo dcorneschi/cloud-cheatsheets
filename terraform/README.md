@@ -3,65 +3,15 @@
 [![IaC](https://img.shields.io/badge/IaC-Terraform-623CE4?logo=terraform)](https://terraform.io)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-FFDD00?logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/dcorneschi)
 
-
-## Terraform Installation Guide
-
-### Linux
-
-#### Using Package Manager (Ubuntu/Debian)
-
-```bash
-wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt update && sudo apt install terraform
-```
-
-#### Using Package Manager (CentOS/RHEL)
-
-```bash
-sudo yum install -y yum-utils
-sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-sudo yum -y install terraform
-```
-
-#### Using Package Manager (Amazon Linux)
-
-```bash
-sudo yum install -y yum-utils shadow-utils
-sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-sudo yum -y install terraform
-```
-
-### macOS
-
-#### Using Homebrew
-
-```bash
-brew tap hashicorp/tap
-brew install hashicorp/tap/terraform
-```
-
-#### Manual Installation (Intel Macs)
-
-```bash
-curl -O https://releases.hashicorp.com/terraform/1.13.0/terraform_1.13.0_darwin_amd64.zip
-unzip terraform_1.13.0_darwin_amd64.zip
-sudo mv terraform /usr/local/bin/
-```
-
-#### For Apple Silicon Macs
-
-```bash
-curl -O https://releases.hashicorp.com/terraform/1.13.0/terraform_1.13.0_darwin_arm64.zip
-unzip terraform_1.13.0_darwin_arm64.zip
-sudo mv terraform /usr/local/bin/
-```
-
-### Install the autocomplete package (add the line ~/.bashrc)
-
-```bash
-terraform -install-autocomplete
-```
+| Platform | Method | Command |
+|----------|--------|---------|
+| **Ubuntu/Debian** | Package Manager | `wget -O - https://apt.releases.hashicorp.com/gpg \| sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg`<br>`echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release \|\| lsb_release -cs) main" \| sudo tee /etc/apt/sources.list.d/hashicorp.list`<br>`sudo apt update && sudo apt install terraform` |
+| **CentOS/RHEL** | Package Manager | `sudo yum install -y yum-utils`<br>`sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo`<br>`sudo yum -y install terraform` |
+| **Amazon Linux** | Package Manager | `sudo yum install -y yum-utils shadow-utils`<br>`sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo`<br>`sudo yum -y install terraform` |
+| **macOS** | Homebrew | `brew tap hashicorp/tap`<br>`brew install hashicorp/tap/terraform` |
+| **macOS (Intel)** | Manual | `curl -O https://releases.hashicorp.com/terraform/1.13.0/terraform_1.13.0_darwin_amd64.zip`<br>`unzip terraform_1.13.0_darwin_amd64.zip`<br>`sudo mv terraform /usr/local/bin/` |
+| **macOS (Apple Silicon)** | Manual | `curl -O https://releases.hashicorp.com/terraform/1.13.0/terraform_1.13.0_darwin_arm64.zip`<br>`unzip terraform_1.13.0_darwin_arm64.zip`<br>`sudo mv terraform /usr/local/bin/` |
+| **All Platforms** | Autocomplete | `terraform -install-autocomplete` |
 
 ### Useful Links
 
