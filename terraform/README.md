@@ -279,11 +279,11 @@ export TF_CLI_CONFIG_FILE="$HOME/.terraformrc"
 
 ### State Management Best Practices
 
-| Practice | Command | Description |
-|----------|---------|-------------|
-| **Backup** | `cp terraform.tfstate terraform.tfstate.backup.$(date +%Y%m%d_%H%M%S)` | Backup state before major operations |
-| **Remote State** | `terraform init -backend-config="bucket=my-tf-state" -backend-config="key=prod/terraform.tfstate"` | Use remote state |
-| **State Locking** | `terraform init -backend-config="dynamodb_table=terraform-locks"` | Enable state locking |
+| Command | Description |
+|---------|-------------|
+| `cp terraform.tfstate terraform.tfstate.backup.$(date +%Y%m%d_%H%M%S)` | Backup state before major operations |
+| `terraform init -backend-config="bucket=my-tf-state" -backend-config="key=prod/terraform.tfstate"` | Use remote state |
+| `terraform init -backend-config="dynamodb_table=terraform-locks"` | Enable state locking |
 
 ### Useful Aliases
 
@@ -317,19 +317,17 @@ tf_base64_decode() {
 }
 ```
 
-### Best Practices & Tips
+### Best Practices & tips
 
-| # | Practice |
-|---|----------|
-| 1 | Always commit lock files to version control alongside your Terraform configuration files |
-| 2 | Never add `.terraform.lock.hcl` to `.gitignore` - ignoring lock files defeats their purpose |
-| 3 | Never commit .tfvars files with secrets |
-| 4 | Store state files remotely and securely |
-| 5 | Use workspaces for environment separation |
-| 6 | Use modules for reusable components |
-| 7 | Pin provider versions in production |
-| 8 | Always run `terraform plan` before `apply` |
-| 9 | Review and understand the execution plan before applying |
+1. Always commit lock files to version control alongside your Terraform configuration files.
+2. Never add `.terraform.lock.hcl to` `.gitignore` - ignoring lock files defeats their purpose.
+3. Never commit .tfvars files with secrets.
+3. Store state files remotely and securely.
+5. Use workspaces for environment separation.
+6. Use modules for reusable components.
+7. Pin provider versions in production.
+8. Always run `terraform plan` before `apply`.
+9. Review and understand the execution plan before applying.
 
 ---
 
