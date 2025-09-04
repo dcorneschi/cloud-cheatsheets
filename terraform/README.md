@@ -3,7 +3,7 @@
 [![IaC](https://img.shields.io/badge/IaC-Terraform-623CE4?logo=terraform)](https://terraform.io)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-FFDD00?logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/dcorneschi)
 
-## Installation Commands
+### Installation Commands
 
 | Platform | Method | Command |
 |----------|--------|---------|
@@ -15,27 +15,27 @@
 | **macOS (Apple Silicon)** | Manual | `curl -O https://releases.hashicorp.com/terraform/1.13.0/terraform_1.13.0_darwin_arm64.zip`<br>`unzip terraform_1.13.0_darwin_arm64.zip`<br>`sudo mv terraform /usr/local/bin/` |
 | **All Platforms** | Autocomplete | `terraform -install-autocomplete` |
 
-## Core Commands
+### Core Commands
 
-| Category | Command | Description |
-|----------|---------|-------------|
-| **Version** | `terraform version` | Get the terraform version |
-| **Initialization** | `terraform init` | Initialize configuration (generate .terraform & .terraform.lock.hcl) |
-| **Initialization** | `terraform init -backend-config="key=value"` | Initialize with backend configuration |
-| **Initialization** | `terraform init -backend-config="backend.conf"` | Initialize with backend configuration file |
-| **Initialization** | `terraform init -backend=false` | Skip backend initialization entirely |
-| **Initialization** | `terraform init -upgrade` | Initialize and upgrade providers |
-| **Initialization** | `terraform init -upgrade=hashicorp/aws` | Upgrade only specific providers |
-| **Initialization** | `terraform init -get-plugins=false` | Initialize without plugins (offline mode) |
-| **Initialization** | `terraform init -get=false` | Skip getting/updating modules |
-| **Initialization** | `terraform init -reconfigure` | Reconfigure backend ignoring saved configuration |
-| **Initialization** | `terraform init -migrate-state` | Migrate state from another backend |
-| **Initialization** | `terraform init -input=false` | Skip interactive prompts |
-| **Initialization** | `terraform init -verify-plugins=false` | Skip plugin signature verification |
-| **Initialization** | `terraform init -lock=false` | Don't hold state lock during migration (dangerous) |
-| **Initialization** | `terraform init -lock-timeout=120s` | Change state lock timeout |
+| Command | Description |
+|---------|-------------|
+| `terraform version` | Get the terraform version |
+| `terraform init` | Initialize configuration (generate .terraform & .terraform.lock.hcl) |
+| `terraform init -backend-config="key=value"` | Initialize with backend configuration |
+| `terraform init -backend-config="backend.conf"` | Initialize with backend configuration file |
+| `terraform init -backend=false` | Skip backend initialization entirely |
+| `terraform init -upgrade` | Initialize and upgrade providers |
+| `terraform init -upgrade=hashicorp/aws` | Upgrade only specific providers |
+| `terraform init -get-plugins=false` | Initialize without plugins (offline mode) |
+| `terraform init -get=false` | Skip getting/updating modules |
+| `terraform init -reconfigure` | Reconfigure backend ignoring saved configuration |
+| `terraform init -migrate-state` | Migrate state from another backend |
+| `terraform init -input=false` | Skip interactive prompts |
+| `terraform init -verify-plugins=false` | Skip plugin signature verification |
+| `terraform init -lock=false` | Don't hold state lock during migration (dangerous) |
+| `terraform init -lock-timeout=120s` | Change state lock timeout |
 
-## Authentication
+### Authentication
 
 | Command | Description |
 |---------|-------------|
@@ -43,7 +43,7 @@
 | `terraform logout` | Log out from Terraform Cloud |
 | `terraform login <hostname>` | Log in to a different host |
 
-## Module Management
+### Module Management
 
 | Command | Description |
 |---------|-------------|
@@ -51,23 +51,23 @@
 | `terraform get -update` | Update modules |
 | `terraform graph -type=plan \| grep module` | Show module tree |
 
-## Planning & Validation
+### Planning & Validation
 
-| Category | Command | Description |
-|----------|---------|-------------|
-| **Planning** | `terraform plan` | Create an execution plan |
-| **Planning** | `terraform plan -out=tfplan` | Save plan to a file |
-| **Planning** | `terraform plan -var-file="prod.tfvars"` | Plan with variable files |
-| **Planning** | `terraform plan -var="region=us-west-2"` | Plan with inline variables |
-| **Planning** | `terraform plan -replace aws_instance.example` | Replace selected resources |
-| **Planning** | `terraform plan -target=module.vpc` | Target specific resources |
-| **Validation** | `terraform validate` | Validate configuration files |
-| **Formatting** | `terraform fmt` | Format configuration files |
-| **Formatting** | `terraform fmt -check` | Check if input is formatted |
-| **Formatting** | `terraform fmt -diff` | Display formatting differences |
-| **Formatting** | `terraform fmt -recursive` | Format files in subdirectories |
+| Command | Description |
+|---------|-------------|
+| `terraform plan` | Create an execution plan |
+| `terraform plan -out=tfplan` | Save plan to a file |
+| `terraform plan -var-file="prod.tfvars"` | Plan with variable files |
+| `terraform plan -var="region=us-west-2"` | Plan with inline variables |
+| `terraform plan -replace aws_instance.example` | Replace selected resources |
+| `terraform plan -target=module.vpc` | Target specific resources |
+| `terraform validate` | Validate configuration files |
+| `terraform fmt` | Format configuration files |
+| `terraform fmt -check` | Check if input is formatted |
+| `terraform fmt -diff` | Display formatting differences |
+| `terraform fmt -recursive` | Format files in subdirectories |
 
-## Apply & Deploy
+### Apply & Deploy
 
 | Command | Description |
 |---------|-------------|
@@ -79,7 +79,7 @@
 | `terraform apply -var-file="prod.tfvars"` | Apply with variable files |
 | `terraform apply --parallelism=5` | Set number of simultaneous operations |
 
-## Destroy & Cleanup
+### Destroy & Cleanup
 
 | Command | Description |
 |---------|-------------|
@@ -90,7 +90,7 @@
 | `terraform plan -destroy -out=destroy.tfplan` | Save destroy plan to file |
 | `terraform apply destroy.tfplan` | Apply destroy plan |
 
-## State Management
+### State Management
 
 | Command | Description |
 |---------|-------------|
@@ -109,7 +109,7 @@
 | `terraform state push terraform.tfstate` | Push local state to remote |
 | `terraform force-unlock -force my_lock_id` | Manually unlock state |
 
-## Workspace Management
+### Workspace Management
 
 | Command | Description |
 |---------|-------------|
@@ -119,7 +119,7 @@
 | `terraform workspace show` | Show current workspace |
 | `terraform workspace delete dev` | Delete workspace |
 
-## Output & Variables
+### Output & Variables
 
 | Command | Description |
 |---------|-------------|
@@ -128,33 +128,33 @@
 | `terraform output -json` | Show outputs in JSON format |
 | `terraform output -raw <name>` | Show specific output value without quotes |
 
-## Debugging & Troubleshooting
+### Debugging & Troubleshooting
 
-| Log Level | Command | Description |
-|-----------|---------|-------------|
-| **Debug** | `export TF_LOG=DEBUG; terraform plan` | Enable debug logging |
-| **Debug** | `TF_LOG=DEBUG terraform init` | Enable debug logging for specific command |
-| **File Logging** | `export TF_LOG_PATH=./terraform.log; terraform apply` | Log to file |
-| **Disable** | `unset TF_LOG` or `export TF_LOG=` | Disable logging |
+| Command | Description |
+|---------|-------------|
+| `export TF_LOG=DEBUG; terraform plan` | Enable debug logging |
+| `TF_LOG=DEBUG terraform init` | Enable debug logging for specific command |
+| `export TF_LOG_PATH=./terraform.log; terraform apply` | Log to file |
+| `unset TF_LOG` or `export TF_LOG=` | Disable logging |
 
 **Available Log Levels:** TRACE, DEBUG, INFO, WARN, ERROR (in order of decreasing verbosity)
 
-## Terraform Console Functions
+### Terraform Console Functions
 
-| Category | Function | Example |
-|----------|----------|---------|
-| **String** | `upper()` | `echo 'upper("hello")' \| terraform console` |
-| **String** | `join()` | `echo 'join(",",[\"a\",\"b\",\"c\"])' \| terraform console` |
-| **String** | `split()` | `echo 'split(",","a,b,c")' \| terraform console` |
-| **String** | `replace()` | `echo 'replace("hello world", "world", "terraform")' \| terraform console` |
-| **List** | `length()` | `echo 'length([\"a\",\"b\",\"c\"])' \| terraform console` |
-| **List** | `element()` | `echo 'element([\"a\",\"b\",\"c\"], 1)' \| terraform console` |
-| **List** | `contains()` | `echo 'contains([\"a\",\"b\",\"c\"], \"b\")' \| terraform console` |
-| **Encoding** | `base64encode()` | `echo 'base64encode("hello")' \| terraform console` |
-| **Encoding** | `base64decode()` | `echo 'base64decode("aGVsbG8=")' \| terraform console` |
-| **Encoding** | `jsonencode()` | `echo 'jsonencode({name="test"})' \| terraform console` |
+| Function | Example |
+|----------|---------|
+| `upper()` | `echo 'upper("hello")' \| terraform console` |
+| `join()` | `echo 'join(",",[\"a\",\"b\",\"c\"])' \| terraform console` |
+| `split()` | `echo 'split(",","a,b,c")' \| terraform console` |
+| `replace()` | `echo 'replace("hello world", "world", "terraform")' \| terraform console` |
+| `length()` | `echo 'length([\"a\",\"b\",\"c\"])' \| terraform console` |
+| `element()` | `echo 'element([\"a\",\"b\",\"c\"], 1)' \| terraform console` |
+| `contains()` | `echo 'contains([\"a\",\"b\",\"c\"], \"b\")' \| terraform console` |
+| `base64encode()` | `echo 'base64encode("hello")' \| terraform console` |
+| `base64decode()` | `echo 'base64decode("aGVsbG8=")' \| terraform console` |
+| `jsonencode()` | `echo 'jsonencode({name="test"})' \| terraform console` |
 
-## Graph & Dependencies
+### Graph & Dependencies
 
 | Command | Description |
 |---------|-------------|
@@ -163,7 +163,7 @@
 | `terraform graph \| dot -Tpng > graph.png` | Convert to PNG (requires Graphviz) |
 | `terraform graph -draw-cycles` | Show resource dependencies |
 
-## Provider Management
+### Provider Management
 
 | Command | Description |
 |---------|-------------|
@@ -172,7 +172,7 @@
 | `terraform providers lock -platform=linux_amd64 -platform=darwin_amd64 -platform=windows_amd64` | Pre-populate hashes for multiple platforms |
 | `terraform providers mirror /path/to/mirror` | Mirror providers for offline use |
 
-## State File Operations
+### State File Operations
 
 | Command | Description |
 |---------|-------------|
@@ -183,7 +183,7 @@
 | `terraform plan -refresh-only` | Inspect resource drift without updating state |
 | `terraform apply -refresh-only` | Plan and refresh the state file |
 
-## Testing & Validation
+### Testing & Validation
 
 | Command | Description |
 |---------|-------------|
@@ -191,57 +191,93 @@
 | `terraform validate -backend=false` | Validate code, skip backend validation |
 | `terraform validate -json` | Output in machine-readable JSON format |
 
-## Utility Tools
+### Utilities
 
-### tfenv (Terraform Version Manager)
+#### tfenv
 
-| Platform | Command | Description |
-|----------|---------|-------------|
-| **macOS** | `brew install tfenv` | Install tfenv |
-| **Linux** | `git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv`<br>`echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile` | Install tfenv |
-| **All** | `tfenv list-remote` | List available versions |
-| **All** | `tfenv install 1.5.0` | Install specific version |
-| **All** | `tfenv use 1.5.0` | Use specific version |
-| **All** | `tfenv install latest` | Install latest version |
-| **All** | `tfenv version` | Show current version |
+```bash
+# Install tfenv on macOS
+brew install tfenv
 
-### tflint (Terraform Linter)
+# Install tfenv on Linux
+git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv
+echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile
 
-| Platform | Command | Description |
-|----------|---------|-------------|
-| **macOS** | `brew install tflint` | Install tflint |
-| **Linux** | `curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh \| bash` | Install tflint |
-| **All** | `tflint` | Lint with TFLint |
+# List available versions
+tfenv list-remote
 
-### tfsec (Security Scanner)
+# Install specific version
+tfenv install 1.5.0
 
-| Platform | Command | Description |
-|----------|---------|-------------|
-| **macOS** | `brew install tfsec` | Install tfsec |
-| **Linux** | `curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh \| bash` | Install tfsec |
-| **All** | `tfsec .` | Scan for security issues |
-| **All** | `tfsec ./infrastructure` | Scan specific directory |
-| **All** | `tfsec --format json .` | Output JSON format |
+# Use specific version
+tfenv use 1.5.0
 
-### terraform-docs (Documentation Generator)
+# Install latest version
+tfenv install latest
 
-| Platform | Command | Description |
-|----------|---------|-------------|
-| **macOS** | `brew install terraform-docs` | Install terraform-docs |
-| **Linux** | `curl -sSLo ./terraform-docs.tar.gz https://terraform-docs.io/dl/v0.20.0/terraform-docs-v0.20.0-$(uname)-amd64.tar.gz`<br>`tar -xzf terraform-docs.tar.gz`<br>`chmod +x terraform-docs`<br>`mv terraform-docs /some-dir-in-your-PATH/terraform-docs` | Install terraform-docs |
-| **All** | `terraform-docs markdown . > README.md` | Generate documentation |
+# Show current version
+tfenv version
+```
 
-## Environment Variables
+#### tflint
 
-| Variable | Example | Description |
-|----------|---------|-------------|
-| `TF_VAR_region` | `export TF_VAR_region="us-west-2"` | Set Terraform variable |
-| `TF_VAR_instance_type` | `export TF_VAR_instance_type="t3.micro"` | Set Terraform variable |
-| `TF_LOG` | `export TF_LOG=DEBUG` | Set logging level |
-| `TF_LOG_PATH` | `export TF_LOG_PATH="./terraform.log"` | Set log file path |
-| `TF_CLI_CONFIG_FILE` | `export TF_CLI_CONFIG_FILE="$HOME/.terraformrc"` | Set CLI config file |
+```bash
+# Install tflint on macOS
+brew install tflint
 
-## State Management Best Practices
+# Install tflint on Linux
+curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+
+# Lint with TFLint
+tflint
+```
+
+#### tfsec
+
+```bash
+# Install tfsec on macOS
+brew install tfsec
+
+# Install tfsec on Linux
+curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
+
+# Scan for security issues (using tfsec)
+tfsec .
+
+# Scan specific directory
+tfsec ./infrastructure
+
+# Output JSON format
+tfsec --format json .
+```
+
+#### terraform-docs
+
+```bash
+# Install terraform-docs on macOS
+brew install terraform-docs
+
+# Install terraform-docs on Linux
+curl -sSLo ./terraform-docs.tar.gz https://terraform-docs.io/dl/v0.20.0/terraform-docs-v0.20.0-$(uname)-amd64.tar.gz
+tar -xzf terraform-docs.tar.gz
+chmod +x terraform-docs
+mv terraform-docs /some-dir-in-your-PATH/terraform-docs
+
+# Generate documentation (using terraform-docs)
+terraform-docs markdown . > README.md
+```
+
+### Terraform Variables
+
+```bash
+export TF_VAR_region="us-west-2"
+export TF_VAR_instance_type="t3.micro"
+export TF_LOG=DEBUG
+export TF_LOG_PATH="./terraform.log"
+export TF_CLI_CONFIG_FILE="$HOME/.terraformrc"
+```
+
+### State Management Best Practices
 
 | Practice | Command | Description |
 |----------|---------|-------------|
@@ -249,26 +285,26 @@
 | **Remote State** | `terraform init -backend-config="bucket=my-tf-state" -backend-config="key=prod/terraform.tfstate"` | Use remote state |
 | **State Locking** | `terraform init -backend-config="dynamodb_table=terraform-locks"` | Enable state locking |
 
-## Useful Aliases
+### Useful Aliases
 
 Add these to your `~/.zshrc` or `~/.bashrc`:
 
-| Alias | Command | Description |
-|-------|---------|-------------|
-| `tf` | `terraform` | Short for terraform |
-| `tfi` | `terraform init` | Initialize |
-| `tfp` | `terraform plan` | Plan |
-| `tfa` | `terraform apply` | Apply |
-| `tfd` | `terraform destroy` | Destroy |
-| `tfs` | `terraform show` | Show |
-| `tfo` | `terraform output` | Output |
-| `tfv` | `terraform validate` | Validate |
-| `tff` | `terraform fmt` | Format |
-| `tfw` | `terraform workspace` | Workspace |
-| `tfws` | `terraform workspace show` | Show workspace |
-| `tfsl` | `terraform state list` | State list |
+```bash
+alias tf="terraform"
+alias tfi="terraform init"
+alias tfp="terraform plan"
+alias tfa="terraform apply"
+alias tfd="terraform destroy"
+alias tfs="terraform show"
+alias tfo="terraform output"
+alias tfv="terraform validate"
+alias tff="terraform fmt"
+alias tfw="terraform workspace"
+alias tfws="terraform workspace show"
+alias tfsl="terraform state list"
+```
 
-## Useful Functions
+### Useful Functions
 
 ```bash
 # Generic function for any base64 string
@@ -281,7 +317,7 @@ tf_base64_decode() {
 }
 ```
 
-## Best Practices & Tips
+### Best Practices & Tips
 
 | # | Practice |
 |---|----------|
