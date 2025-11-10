@@ -1,4 +1,4 @@
-# Terraform Cheatsheet - Table Format
+# Terraform Cheatsheet
 
 [![IaC](https://img.shields.io/badge/IaC-Terraform-623CE4?logo=terraform)](https://terraform.io)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-FFDD00?logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/dcorneschi)
