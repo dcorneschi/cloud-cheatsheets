@@ -1,4 +1,4 @@
-# Helm Commands Cheatsheet
+# Helm Cheatsheet
 
 ## Overview
 Helm is the package manager for Kubernetes that helps you define, install, and upgrade complex Kubernetes applications using charts.
