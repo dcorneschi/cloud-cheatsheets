@@ -131,9 +131,7 @@ helm get notes argo -n argo
 helm get all argo -n argo
 
 # Show release history
-helm history my-release
-
-# History with detailed info
-helm history my-release --output json
+helm history argo -n argo
+helm history argo -n argo --output json
 ```
 
