@@ -58,9 +58,6 @@ helm install metrics-server metrics-server/metrics-server --namespace kube-syste
 # Install and create the namespace
 helm install traefik traefik/traefik -n traefik --create-namespace
 
-# Install in a new namespace
-helm install traefik traefik/traefik -n traefik --create-namespace
-
 # Install with inline values
 helm install traefik traefik/traefik -n traefik --create-namespace --set service.type=LoadBalancer
 
