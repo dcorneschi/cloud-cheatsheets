@@ -11,6 +11,9 @@ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 # Install via package managers (macOS)
 brew install helm
+
+# Verify installation
+helm version
 ```
 
 ## Repository Management
@@ -24,6 +27,7 @@ helm repo update
 
 # List configured repositories
 helm repo list
+helm repo list -o yaml
 
 # Remove a repository
 helm repo remove <repo-name>
@@ -57,7 +61,7 @@ helm install traefik traefik/traefik -n traefik --create-namespace
 # Install in a new namespace
 helm install traefik traefik/traefik -n traefik --create-namespace
 
-# Install with custom values
+# Install with inline values
 helm install traefik traefik/traefik -n traefik --create-namespace --set service.type=LoadBalancer
 
 # Install with values file
@@ -66,10 +70,33 @@ helm install traefik traefik/traefik -f values.yaml
 # Install from local chart
 helm install traefik ./traefik
 
+# Install from packaged chart
+helm install traefik ./traefik-37.3.0.tgz
+
 # Install with specific version
 helm install metrics-server metrics-server/metrics-server --version 3.12.2
+
+# Wait for deployment to complete
+helm install metrics-server metrics-server/metrics-server --wait --timeout 5m
 
 # Dry run & debug installation
 helm install traefik traefik/traefik --dry-run
 helm install traefik traefik/traefik --dry-run --debug
+
+# Fetch and extract a chart
+helm pull traefik/traefik
+helm pull traefik/traefik --untar
+
+# Validate chart syntax
+helm lint traefik
+```
+
+## Create & Develop Charts
+
+```bash
+# Create a new chart
+helm create my-chart
+
+# Package chart into tarball
+helm package my-chart
 ```
