@@ -97,3 +97,43 @@ helm create my-chart
 # Package chart into tarball
 helm package my-chart
 ```
+
+## Release Management
+
+```bash
+# List releases in specific namespace
+helm list -n argo
+
+# List all releases across all namespaces
+helm list -A                     # default --output table
+helm list -A --output yaml
+helm list -A --output json
+
+# Get specific field
+helm list -A --output json | jq '.[] | .name'
+
+# Show release details
+helm status argo -n argo
+
+# Get user-supplied values
+helm get values argo -n argo
+
+# Get all of the values used by a release (including the defaults)
+helm get values argo -n argo --all
+
+# Get release manifest (rendered YAML)
+helm get manifest argo -n argo
+
+# Get release notes
+helm get notes argo -n argo
+
+# Get all the information about a named release
+helm get all argo -n argo
+
+# Show release history
+helm history my-release
+
+# History with detailed info
+helm history my-release --output json
+```
+
