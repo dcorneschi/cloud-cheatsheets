@@ -3,6 +3,22 @@
 ## Overview
 Helm is the package manager for Kubernetes that helps you define, install, and upgrade complex Kubernetes applications using charts.
 
+## Directory Structure
+
+```
+my-chart/
+├── Chart.yaml              # Chart metadata (name, version, description)
+├── values.yaml             # Default configuration values
+├── values.schema.json      # JSON schema that validates values
+├── templates/              # Kubernetes manifest templates
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── configmap.yaml
+│   └── _helpers.tpl        # Template helpers (prefixed with _)
+├── charts/                 # Dependency charts (optional)
+└── README.md              # Documentation
+```
+
 ## Install Helm
 
 ```bash
