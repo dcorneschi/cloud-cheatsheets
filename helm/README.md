@@ -83,6 +83,7 @@ helm install traefik traefik/traefik --dry-run --debug
 # Fetch and extract a chart
 helm pull traefik/traefik
 helm pull traefik/traefik --untar
+helm pull traefik/traefik --destination helm-charts --untar
 
 # Validate chart syntax
 helm lint traefik
