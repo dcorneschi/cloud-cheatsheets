@@ -16,7 +16,7 @@ my-chart/
 │   ├── configmap.yaml
 │   └── _helpers.tpl        # Template helpers (prefixed with _)
 ├── charts/                 # Dependency charts (optional)
-└── README.md              # Documentation
+└── README.md               # Documentation
 ```
 
 ## Install Helm
