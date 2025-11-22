@@ -61,7 +61,12 @@ helm repo remove <repo-name>
 
 # Search for charts in repositories
 helm search repo traefik
-helm search repo traefik --versions           # show all versions
+
+# List all versions with default column width
+helm search repo traefik/traefik --versions
+
+# List all versions with full width output (recommended)
+helm search repo traefik/traefik --versions --max-col-width 0
 
 # Search Helm Hub
 helm search hub metrics-server
