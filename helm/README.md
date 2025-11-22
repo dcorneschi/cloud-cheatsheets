@@ -19,6 +19,14 @@ my-chart/
 └── README.md               # Documentation
 ```
 
+## Actual Charts
+
+When you run `helm repo update`, Helm downloads **only the index** (metadata about available charts), not the actual chart packages. Charts are only downloaded when you explicitly:
+
+- `helm pull` - Download chart to local directory
+- `helm install` - Download and install (cached temporarily)
+- `helm upgrade` - Download new version (cached temporarily)
+
 ## Install Helm
 
 ```bash
@@ -38,8 +46,11 @@ helm version
 # Add a repository
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
 
-# Update repositories
+# Update repository indexes
 helm repo update
+
+# Force update all repositories
+helm repo update --fail-on-repo-update-fail
 
 # List configured repositories
 helm repo list
@@ -55,11 +66,17 @@ helm search repo traefik --versions           # show all versions
 # Search Helm Hub
 helm search hub metrics-server
 
-# Show chart information
-helm show chart metrics-server/metrics-server
-helm show values metrics-server/metrics-server
-helm show readme metrics-server/metrics-server
-helm show all metrics-server/metrics-server
+# Show chart metadata
+helm show chart traefik/traefik
+
+# Show default values
+helm show values traefik/traefik
+
+# Show README
+helm show readme traefik/traefik
+
+# Show all info
+helm show all traefik/traefik
 ```
 
 ## Install Charts
@@ -95,14 +112,32 @@ helm install metrics-server metrics-server/metrics-server --wait --timeout 5m
 # Dry run & debug installation
 helm install traefik traefik/traefik --dry-run
 helm install traefik traefik/traefik --dry-run --debug
+```
 
-# Fetch and extract a chart
+## Download to Current Directory
+
+```bash
+# Download chart package (tgz) to current directory
 helm pull traefik/traefik
-helm pull traefik/traefik --untar
-helm pull traefik/traefik --destination helm-charts --untar
 
-# Validate chart syntax
-helm lint traefik
+# Download and extract
+helm pull traefik/traefik --untar
+
+# Download to specific location
+mkdir -p ~/helm-charts
+helm pull traefik/traefik --destination ~/helm-charts
+
+# Download and extract to specific location
+helm pull traefik/traefik --destination ~/helm-charts --untar
+
+# Download specific version
+helm pull traefik/traefik --version 27.0.0 --destination ~/helm-charts
+
+# Download Multiple Charts
+mkdir -p ~/helm-charts/{traefik,nginx,postgres}
+helm pull traefik/traefik --destination ~/helm-charts/traefik --untar
+helm pull bitnami/nginx --destination ~/helm-charts/nginx --untar
+helm pull bitnami/postgresql --destination ~/helm-charts/postgres --untar
 ```
 
 ## Create & Develop Charts
@@ -113,9 +148,14 @@ helm create my-chart
 
 # Package chart into tarball
 helm package my-chart
+
+# Validate chart syntax
+helm lint traefik
 ```
 
 ## Release Management
+
+Release information is stored in Kubernetes, not on your local machine.
 
 ```bash
 # List releases in specific namespace
@@ -128,6 +168,9 @@ helm list -A --output json
 
 # Get specific field
 helm list -A --output json | jq '.[] | .name'
+
+# Release data is stored in Kubernetes secrets
+kubectl get secrets -n <namespace> -l owner=helm
 
 # Show release details
 helm status argo -n argo
@@ -152,3 +195,101 @@ helm history argo -n argo
 helm history argo -n argo --output json
 ```
 
+## View Helm Environment Variables
+
+```bash
+# Show all Helm environment variables
+helm env
+
+# Check cache location
+helm env | grep CACHE
+
+# Common Helm paths
+helm env | grep -E "(CACHE|CONFIG|DATA)"
+```
+
+##  Set Custom Cache Location
+
+```bash
+# Set custom cache directory
+export HELM_CACHE_HOME=~/my-custom-helm-cache
+
+# Set custom config directory
+export HELM_CONFIG_HOME=~/.config/helm
+
+# Set custom data directory
+export HELM_DATA_HOME=~/.local/share/helm
+
+# Make permanent (add to ~/.bash_profile or ~/.zshrc)
+echo 'export HELM_CACHE_HOME=~/my-custom-helm-cache' >> ~/.bash_profile
+```
+
+## List Cached Repository Indexes (macOS)
+
+```bash
+# Helm configuration directory
+~/Library/Preferences/helm/
+
+# List all files in repository cache
+ls -la ~/Library/Caches/helm/repository/
+
+# View with human-readable sizes
+ls -lh ~/Library/Caches/helm/repository/
+
+# Show only YAML index files
+ls -la ~/Library/Caches/helm/repository/*.yaml
+
+# Show only chart archives
+ls -la ~/Library/Caches/helm/repository/*.tgz
+
+# Repository configuration
+~/Library/Preferences/helm/repositories.yaml
+
+# Plugin directory
+~/Library/helm/plugins/
+
+# Check cache directory size
+du -sh ~/Library/Caches/helm/
+
+# Check repository cache size
+du -sh ~/Library/Caches/helm/repository/
+
+# List files by size
+du -h ~/Library/Caches/helm/repository/* | sort -h
+
+# Remove all cached charts (keeps repository indexes)
+rm -f ~/Library/Caches/helm/repository/*.tgz
+
+# Remove specific cached chart
+rm -f ~/Library/Caches/helm/repository/traefik-*.tgz
+
+# Clear entire cache (nuclear option)
+rm -rf ~/Library/Caches/helm/
+
+# After clearing, update repositories
+helm repo update
+```
+
+## Examples
+
+### Extract and Modify Chart
+
+```bash
+# Download and extract chart
+helm pull traefik/traefik --untar --destination ~/my-custom-charts
+
+# Navigate to chart
+cd ~/my-custom-charts/traefik
+
+# Modify values or templates
+vim values.yaml
+vim templates/deployment.yaml
+
+# Create custom chart package
+cd ..
+helm package traefik
+# Creates: traefik-27.0.0.tgz
+
+# Install custom chart
+helm install my-traefik ./traefik-27.0.0.tgz
+```
