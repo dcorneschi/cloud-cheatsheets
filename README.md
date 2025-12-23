@@ -1,6 +1,6 @@
 ## 📖🐧Cloud Cheatsheets 
 
-A collection of handy **Linux command-line cheatsheets** for quick reference and productivity. This repository is designed to help developers, sysadmins, and Linux enthusiasts work more efficiently.
+A collection of handy **Cloud command-line cheatsheets** for quick reference and productivity. This repository is designed to help developers, sysadmins, and Linux enthusiasts work more efficiently.
 
 ## 🤝 Support
 
